@@ -25,9 +25,28 @@ namespace ToDoList.Controllers
     }
     //creates new categories with a form
     //next add new.cshtml
+    //after new.cshtml form creates a new post request handled below
 
-    
+    [HttpPost("/categories")]
+    public ActionResult Create(string categoryName)
+    {
+      Category newCategory = new Category(categoryName);
+      return RedirectToAction("Index");
+    }
+    //in Category index view we added links to each Category name so user can click an individual Category
+    //using RESTful routing convention, route is named Show() below
 
-
+    [HttpGet("/categories/{id}")]
+    public ActionResult Show(int id)
+    {
+      Dictionary<string, object> model = new Dictionary<string, object>();
+      Category selectedCategory = Category.Find(id);
+      List<Item> categoryItems = selectedCategory.Items;
+      model.Add("category", selectedCategory);
+      model.Add("items", categoryItems);
+      return View(model);
+    }
+    //created new Dictionary called model because a Dictionary can hold multiple key-value pairs (list within category)
+    //making routes view next in Show.cshtml
   }
 }
