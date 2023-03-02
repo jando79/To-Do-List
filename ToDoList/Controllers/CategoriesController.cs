@@ -18,7 +18,16 @@ namespace ToDoList.Controllers
     //creates an Index() route to display all Category(variable)
     //next add corresponding view in new Views subdirectory
 
+    [HttpGet("/categories/new")]
+    public ActionResult New()
+    {
+      return View();
+    }
+    //creates new categories with a form
+    //next add new.cshtml
+
     
+
 
   }
 }
