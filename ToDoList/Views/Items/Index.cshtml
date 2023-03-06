@@ -10,16 +10,19 @@
       crossorigin="anonymous">
   </head>
   <body>
-    <h1>Add a category</h1>
-    <p>Add a category here:</p>
+    @using ToDoList.Models;
 
-    <form action="/categories" method="post">
-      <label for="categoryName">Category name</label>
-      <input id="categoryName" name="categoryName" type="text">
-      <button type="submit">Add</button>
-    </form>
+    <h1>Items</h1>
 
-    <p><a href="/">Back home</a></p>
-    <p><a href="/categories">Back to categories</a></p>
+    @if (@Model.Count == 0)
+    {
+      <h3>No items have been added yet!</h3>
+    } 
+
+    @foreach (Item item in Model)
+    {
+      <li>@item.Description</li>
+    }
+
   </body>
 </html>
