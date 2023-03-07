@@ -10,15 +10,15 @@
       crossorigin="anonymous">
   </head>
   <body>
-    <h1>Items</h1>
+   @model ToDoList.Models.Item
 
-<ul>
-  @foreach(Item item in Model)
-  {
-    <li>@Html.ActionLink($"{item.Description}", "Details", new { id = item.ItemId })</li>
-  }
-</ul>
-
-<p>@Html.ActionLink("Add new item", "Create")</p>
+<h4>Add a new item</h4>
+@using (Html.BeginForm())
+{
+  @Html.LabelFor(model => model.Description)
+  @Html.TextBoxFor(model => model.Description)
+  <input type="submit" value="Add new item" />
+}
+<p>@Html.ActionLink("Show all items", "Index")</p>
   </body>
 </html>
