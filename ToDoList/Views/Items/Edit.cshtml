@@ -9,16 +9,23 @@
       integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" 
       crossorigin="anonymous">
   </head>
-  <body>
-   @model ToDoList.Models.Item
 
-    <h4>Add a new item</h4>
+  <body>
+    @model ToDoList.Models.Item
+
+    <h2>Edit</h2>
+
+    <h4>Edit this item: @Html.DisplayFor(model => model.Description)</h4>
+
     @using (Html.BeginForm())
     {
+      @Html.HiddenFor(model => model.ItemId)
+
       @Html.LabelFor(model => model.Description)
-      @Html.TextBoxFor(model => model.Description)
-      <input type="submit" value="Add new item" />
+      @Html.EditorFor(model => model.Description)
+
+      <input type="submit" value="Save" />
     }
-    <p>@Html.ActionLink("Show all items", "Index")</p>
+    <p>@Html.ActionLink("Back to list", "Index")</p>
   </body>
 </html>

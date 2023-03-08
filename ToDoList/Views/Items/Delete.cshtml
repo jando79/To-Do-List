@@ -10,15 +10,15 @@
       crossorigin="anonymous">
   </head>
   <body>
-   @model ToDoList.Models.Item
+    @model ToDoList.Models.Item
 
-    <h4>Add a new item</h4>
+    <h2>Are you sure you want to delete this?</h2>
+
+    @Html.DisplayNameFor(model => model.Description): @Html.DisplayFor(model => model.Description)
     @using (Html.BeginForm())
     {
-      @Html.LabelFor(model => model.Description)
-      @Html.TextBoxFor(model => model.Description)
-      <input type="submit" value="Add new item" />
+      <input type="submit" value="Delete" />
     }
-    <p>@Html.ActionLink("Show all items", "Index")</p>
+    @Html.ActionLink("Back to List", "Index")
   </body>
 </html>
