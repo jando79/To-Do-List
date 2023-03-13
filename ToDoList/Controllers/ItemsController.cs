@@ -59,6 +59,18 @@ namespace ToDoList.Controllers
       return View(thisItem);
     }
 
+    public ActionResult IsComplete(int id, bool isComplete)
+    {
+      Item item = _db.Items.FirstOrDefault(item => item.ItemId == id);
+      if (item == null)
+      {
+        return NotFound();
+      }
+      item.IsComplete = isComplete;
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
+
     [HttpPost]
     public ActionResult Edit(Item item)
     {

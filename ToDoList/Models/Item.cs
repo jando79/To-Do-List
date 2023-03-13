@@ -7,6 +7,7 @@ namespace ToDoList.Models
     public int ItemId { get; set; }
     public string Description { get; set; }
     public int CategoryId { get; set; }
+    public bool IsComplete { get; set; } = false;
     public Category Category { get; set; }
     public List<ItemTag> JoinEntities { get;}
   }
