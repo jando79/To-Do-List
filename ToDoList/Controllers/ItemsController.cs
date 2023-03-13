@@ -20,6 +20,7 @@ namespace ToDoList.Controllers
     {
       List<Item> model = _db.Items
                             .Include(item => item.Category)
+                            .OrderBy(item => item.DueDate)
                             .ToList();
       return View(model);
     }
@@ -122,6 +123,7 @@ namespace ToDoList.Controllers
       _db.ItemTags.Remove(joinEntry);
       _db.SaveChanges();
       return RedirectToAction("Index");
-    }  
+    }
+ 
   }
 }
